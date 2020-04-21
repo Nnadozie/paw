@@ -1,5 +1,9 @@
 # paw
-A social app to for people to check up on friends, post opportunities, post learning opportunities.
+A social app to bring people closer to those who matter to them.
+
+
+
+
 
 Apache License
                            Version 2.0, January 2004
