@@ -7,8 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class PawApplication {
 
 	public static void main(String[] args) {
-		System.out.println("I started");
-		//SpringApplication.run(PawApplication.class, args);
+		SpringApplication.run(PawApplication.class, args);
 	}
 
 }
