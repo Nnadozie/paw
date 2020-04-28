@@ -1,4 +1,4 @@
-package com.nnadozie.paw;
+package com.pawww.paw;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

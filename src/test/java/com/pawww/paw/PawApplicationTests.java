@@ -1,4 +1,4 @@
-package com.nnadozie.paw;
+package com.pawww.paw;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

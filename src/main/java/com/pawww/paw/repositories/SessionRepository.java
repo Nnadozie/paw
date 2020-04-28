@@ -1,6 +1,6 @@
-package com.nnadozie.paw.repositories;
+package com.paawww.paw.repositories;
 
-import com.nnadozie.paw.models.Session;
+import com.paawww.paw.models.Session;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

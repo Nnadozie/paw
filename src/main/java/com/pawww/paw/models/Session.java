@@ -1,4 +1,4 @@
-package com.nnadozie.paw.models;
+package com.paawww.paw.models;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

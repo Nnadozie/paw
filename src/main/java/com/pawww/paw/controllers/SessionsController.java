@@ -1,9 +1,9 @@
-package com.nnadozie.paw.controllers;
+package com.paawww.paw.controllers;
 
 import java.util.List;
 
-import com.nnadozie.paw.models.Session;
-import com.nnadozie.paw.repositories.SessionRepository;
+import com.paawww.paw.models.Session;
+import com.paawww.paw.repositories.SessionRepository;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
