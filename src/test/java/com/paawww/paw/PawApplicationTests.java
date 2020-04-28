@@ -1,4 +1,4 @@
-package com.pawww.paw;
+package com.paawww.paw;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
