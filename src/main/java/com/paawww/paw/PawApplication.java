@@ -1,4 +1,4 @@
-package com.pawww.paw;
+package com.paawww.paw;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
