@@ -1,16 +1,16 @@
 language: java
 before_install:
 - chmod +x mvnw
-deploy:
-  provider: heroku
-  api_key:
-    secure: GWLfJVWDR4TzKOfsCjTmn1x/3nuHscQbU31sVcnC/AXNneBNTOhlsJEGa3WpiszlEFzGRVJ8f61cIAKvjA+odVwOVSXqV2GCrPKRb8eF+bxtzvIf9CuF1nIHjLaLTEzqv/zGhOyJPc4PVzgnB9GP+qZto/rjlo+SYcQPN0tI1EQqpepDpWySEf5VrlZUSdcGqqouqu1WEZPaem6SX6oVL6njnrj/dx3w7vPpTYggPAfidzZD+xjIrBifDb1vTS27DV17BsnH9gQX+IwHpE968kiNL1ba2+9Qw9CgNzBwqEj2CZyJAaV9PB8N1CRj0ooDyL4w3OtGKOogKWpbvybe5IbK8CWo4f+8muQ1r/Pt/zLnXdbHS3i4/FsDazInjZfWxHK3xglLYHqRxM2yPnNqH33HEVcJ9BFMcJjDBrTRXXaZ0Paz5LRFaSzxrTz3EIGMTkYqVzgDWdNB5ZRr95oSLcUIwWBpGSvo5gKsqfL3Cobos68ei+mMWGozCw3ZirDrtxyL1bg+KE9jDfh4SfPwgWiecTfp9DmyAkQLHW+AM3eBMj0nv1MD6ggrOIFmauJOqV/J59zKQQiSWrMFPaVjr939xISMCDY43KUJBx5ss6djUw6KVIf1malxlS5bxX3+eJ2PPOWYXyDKPBPtg0SEjSoV3OoRxnAYehwyIETGnHY=
-  app:
-    dev: paawww-dev
-    staging: paawww-staging
-    master: paawww-production
-    setup/project: paawww-dev
-  on:
-    all_branches: true
-  skip_cleanup: true
+# deploy:
+#   provider: heroku
+#   api_key:
+#     secure: GWLfJVWDR4TzKOfsCjTmn1x/3nuHscQbU31sVcnC/AXNneBNTOhlsJEGa3WpiszlEFzGRVJ8f61cIAKvjA+odVwOVSXqV2GCrPKRb8eF+bxtzvIf9CuF1nIHjLaLTEzqv/zGhOyJPc4PVzgnB9GP+qZto/rjlo+SYcQPN0tI1EQqpepDpWySEf5VrlZUSdcGqqouqu1WEZPaem6SX6oVL6njnrj/dx3w7vPpTYggPAfidzZD+xjIrBifDb1vTS27DV17BsnH9gQX+IwHpE968kiNL1ba2+9Qw9CgNzBwqEj2CZyJAaV9PB8N1CRj0ooDyL4w3OtGKOogKWpbvybe5IbK8CWo4f+8muQ1r/Pt/zLnXdbHS3i4/FsDazInjZfWxHK3xglLYHqRxM2yPnNqH33HEVcJ9BFMcJjDBrTRXXaZ0Paz5LRFaSzxrTz3EIGMTkYqVzgDWdNB5ZRr95oSLcUIwWBpGSvo5gKsqfL3Cobos68ei+mMWGozCw3ZirDrtxyL1bg+KE9jDfh4SfPwgWiecTfp9DmyAkQLHW+AM3eBMj0nv1MD6ggrOIFmauJOqV/J59zKQQiSWrMFPaVjr939xISMCDY43KUJBx5ss6djUw6KVIf1malxlS5bxX3+eJ2PPOWYXyDKPBPtg0SEjSoV3OoRxnAYehwyIETGnHY=
+#   app:
+#     dev: paawww-dev
+#     staging: paawww-staging
+#     master: paawww-production
+#     setup/project: paawww-dev
+#   on:
+#     all_branches: true
+#   skip_cleanup: true
 
