@@ -1,0 +1,1 @@
+[![Build Status](https://travis-ci.com/Nnadozie/paw.svg?branch=setup/project)](https://travis-ci.com/Nnadozie/paw)
