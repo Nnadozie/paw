@@ -2,3 +2,10 @@ Travis setup/project: [![Build Status](https://travis-ci.com/Nnadozie/paw.svg?br
 Dev: [![Build Status](https://travis-ci.com/Nnadozie/paw.svg?branch=dev)](https://travis-ci.com/Nnadozie/paw)
 Staging: [![Build Status](https://travis-ci.com/Nnadozie/paw.svg?branch=staging)](https://travis-ci.com/Nnadozie/paw)
 Production: [![Build Status](https://travis-ci.com/Nnadozie/paw.svg?branch=master)](https://travis-ci.com/Nnadozie/paw)
+
+Coveralls --Test coverage reporting
+
+setup/project: [![Coverage Status](https://coveralls.io/repos/github/Nnadozie/paw/badge.svg?branch=setup/project)](https://coveralls.io/github/Nnadozie/paw?branch=setup/project)
+Dev: [![Coverage Status](https://coveralls.io/repos/github/Nnadozie/paw/badge.svg?branch=dev)](https://coveralls.io/github/Nnadozie/paw?branch=dev)
+Staging: [![Coverage Status](https://coveralls.io/repos/github/Nnadozie/paw/badge.svg?branch=staging)](https://coveralls.io/github/Nnadozie/paw?branch=staging)
+Production [![Coverage Status](https://coveralls.io/repos/github/Nnadozie/paw/badge.svg?branch=master)](https://coveralls.io/github/Nnadozie/paw?branch=master)
