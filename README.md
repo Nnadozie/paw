@@ -9,3 +9,8 @@ setup/project: [![Coverage Status](https://coveralls.io/repos/github/Nnadozie/pa
 Dev: [![Coverage Status](https://coveralls.io/repos/github/Nnadozie/paw/badge.svg?branch=dev)](https://coveralls.io/github/Nnadozie/paw?branch=dev)
 Staging: [![Coverage Status](https://coveralls.io/repos/github/Nnadozie/paw/badge.svg?branch=staging)](https://coveralls.io/github/Nnadozie/paw?branch=staging)
 Production [![Coverage Status](https://coveralls.io/repos/github/Nnadozie/paw/badge.svg?branch=master)](https://coveralls.io/github/Nnadozie/paw?branch=master)
+
+codeclimate 
+
+dev: [![Maintainability](https://api.codeclimate.com/v1/badges/c5d3506b2e15785bb622/maintainability)](https://codeclimate.com/github/Nnadozie/paw/maintainability)
+[![Test Coverage](https://api.codeclimate.com/v1/badges/c5d3506b2e15785bb622/test_coverage)](https://codeclimate.com/github/Nnadozie/paw/test_coverage)
