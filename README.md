@@ -13,4 +13,3 @@ Production [![Coverage Status](https://coveralls.io/repos/github/Nnadozie/paw/ba
 codeclimate 
 
 dev: [![Maintainability](https://api.codeclimate.com/v1/badges/c5d3506b2e15785bb622/maintainability)](https://codeclimate.com/github/Nnadozie/paw/maintainability)
-[![Test Coverage](https://api.codeclimate.com/v1/badges/c5d3506b2e15785bb622/test_coverage)](https://codeclimate.com/github/Nnadozie/paw/test_coverage)
