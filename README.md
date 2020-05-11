@@ -1,3 +1,8 @@
+- [About Paw](#paw) 
+- [Setting Up](#setting-up)
+- [Tracking Code Quality](#tracking-code-quality)
+
+
 # Paw
 A social app to bring people closer to those who matter to them.
 
@@ -94,3 +99,46 @@ deploy:
 - on: we can specify conditional deploys with on:. Here I'm saying I want a deploy all all branches.
 - skip_cleanup: true retains our build files after the travis build. (The idea is so that Heroku doesn't have to rebuild our project, resulting in shorter build times, but for now this project deployments rely on Heroku rebuilds)
 Reference [the documentation](https://docs.travis-ci.com/user/tutorial/) for more info.
+
+### Tracking Code Quality
+
+**JaCoCo and Coveralls for Coverage**
+
+We're using the [JaCoCo](https://www.jacoco.org/jacoco/trunk/index.html) library to generate code coverage reports, and [coveralls](https://coveralls.io/) as our continuos integration coverage reporting tool. The way this works: JaCoCo is set up to generate a coverage report each time we run a travis build by making a PR or updating a PR with a commit. The report is then sent over to coveralls which includes a summary of it in our PR -- allowing us to see at a glance whether we're writing enough tests for our coverage goal of 50%.
+
+The setup followed [the coveralls Java documentation](https://docs.coveralls.io/java) with **one important NOTE**. We needed to add a javax dependency to the coveralls plugin as [detailed in this issue](https://github.com/trautonen/coveralls-maven-plugin/issues/112), likely because we're using Java 11. Here's what all this looks like in our pom.xml file
+
+```
+			<plugin>
+				<groupId>org.eluder.coveralls</groupId>
+				<artifactId>coveralls-maven-plugin</artifactId>
+				<version>4.3.0</version>
+				<dependencies>
+					<dependency>
+						<groupId>javax.xml.bind</groupId>
+						<artifactId>jaxb-api</artifactId>
+						<version>2.2.3</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.5</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+```
+
+**Codeclimate for Code Smells**
+
+We [set up Codeclimate Quality](https://docs.codeclimate.com/docs/workflow) with [Github PR Integration enabled](https://docs.codeclimate.com/docs/github-pull-requests) using the default quality metrics to track code smells in our code.
+
+
+
