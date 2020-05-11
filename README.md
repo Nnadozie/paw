@@ -139,6 +139,3 @@ The setup followed [the coveralls Java documentation](https://docs.coveralls.io/
 **Codeclimate for Code Smells**
 
 We [set up Codeclimate Quality](https://docs.codeclimate.com/docs/workflow) with [Github PR Integration enabled](https://docs.codeclimate.com/docs/github-pull-requests) using the default quality metrics to track code smells in our code.
-
-
-
