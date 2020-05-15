@@ -1,197 +1,141 @@
-# paw
+- [About Paw](#paw) 
+- [Setting Up](#setting-up)
+- [Tracking Code Quality](#tracking-code-quality)
+
+
+# Paw
 A social app to bring people closer to those who matter to them.
 
+setup/project: [![Build Status](https://travis-ci.com/Nnadozie/paw.svg?branch=setup/project)](https://travis-ci.com/Nnadozie/paw) [![Coverage Status](https://coveralls.io/repos/github/Nnadozie/paw/badge.svg?branch=setup/project)](https://coveralls.io/github/Nnadozie/paw?branch=setup/project)
 
+**Required minimum coverage: 50%**
 
+Dev: [![Build Status](https://travis-ci.com/Nnadozie/paw.svg?branch=dev)](https://travis-ci.com/Nnadozie/paw) [![Coverage Status](https://coveralls.io/repos/github/Nnadozie/paw/badge.svg?branch=dev)](https://coveralls.io/github/Nnadozie/paw?branch=dev) [![Maintainability](https://api.codeclimate.com/v1/badges/c5d3506b2e15785bb622/maintainability)](https://codeclimate.com/github/Nnadozie/paw/maintainability)
 
+Staging: [![Build Status](https://travis-ci.com/Nnadozie/paw.svg?branch=staging)](https://travis-ci.com/Nnadozie/paw) [![Coverage Status](https://coveralls.io/repos/github/Nnadozie/paw/badge.svg?branch=staging)](https://coveralls.io/github/Nnadozie/paw?branch=staging)
 
-Apache License
-                           Version 2.0, January 2004
-                        http://www.apache.org/licenses/
+Production: [![Build Status](https://travis-ci.com/Nnadozie/paw.svg?branch=master)](https://travis-ci.com/Nnadozie/paw) [![Coverage Status](https://coveralls.io/repos/github/Nnadozie/paw/badge.svg?branch=master)](https://coveralls.io/github/Nnadozie/paw?branch=master)
 
-   TERMS AND CONDITIONS FOR USE, REPRODUCTION, AND DISTRIBUTION
+## Setting Up
+**Development environment is set up as follows**
 
-   1. Definitions.
+- Spring Boot 2.2.6.RELEASE
+- Postgresql 10.12
 
-      "License" shall mean the terms and conditions for use, reproduction,
-      and distribution as defined by Sections 1 through 9 of this document.
+Java 11:
+- openjdk 11.0.7 2020-04-14
+- OpenJDK Runtime Environment AdoptOpenJDK (build 11.0.7+10)
+- OpenJDK 64-Bit Server VM AdoptOpenJDK (build 11.0.7+10, mixed mode)
 
-      "Licensor" shall mean the copyright owner or entity authorized by
-      the copyright owner that is granting the License.
+**Travis is used for running tests, and Heroku is used for deployments**
 
-      "Legal Entity" shall mean the union of the acting entity and all
-      other entities that control, are controlled by, or are under common
-      control with that entity. For the purposes of this definition,
-      "control" means (i) the power, direct or indirect, to cause the
-      direction or management of such entity, whether by contract or
-      otherwise, or (ii) ownership of fifty percent (50%) or more of the
-      outstanding shares, or (iii) beneficial ownership of such entity.
+Our Travis and Heroku accounts have both been granted access to our Github repository. See [Travis CI getting started](https://docs.travis-ci.com/user/tutorial/) and [Deploying Java Apps on Heroku](https://devcenter.heroku.com/articles/deploying-java) for how to do this.
 
-      "You" (or "Your") shall mean an individual or Legal Entity
-      exercising permissions granted by this License.
+**Notes on Heroku**: 
+- Be sure to include the maven dependency plugin. Here's an example of our setup. You can see we've included the maven dependency plugin after our spring-boot-maven-plugin.
+```
+        ....
+	</dependencies>
 
-      "Source" form shall mean the preferred form for making modifications,
-      including but not limited to software source code, documentation
-      source, and configuration files.
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.springframework.boot</groupId>
+				<artifactId>spring-boot-maven-plugin</artifactId>
+			</plugin>
+			<plugin>
+                                <groupId>org.apache.maven.plugins</groupId>
+                                <artifactId>maven-dependency-plugin</artifactId>
+                                <version>3.0.1</version>
+                                <executions>
+                                     <execution>
+                                     <id>copy-dependencies</id>
+                                     <phase>package</phase>
+                                     <goals><goal>copy-dependencies</goal></goals>
+                                     </execution>
+                                </executions>
+                       </plugin>
+		</plugins>
+	</build>
 
-      "Object" form shall mean any form resulting from mechanical
-      transformation or translation of a Source form, including but
-      not limited to compiled object code, generated documentation,
-      and conversions to other media types.
+</project>
 
-      "Work" shall mean the work of authorship, whether in Source or
-      Object form, made available under the License, as indicated by a
-      copyright notice that is included in or attached to the work
-      (an example is provided in the Appendix below).
+```
+- Include a systems.properties file in the root of the project specifying the Java runtime. This project uses Java 11. Without specifying it, Heroku attempts to use a Java 8 runtime which results in a build failure.
+```
+]- project root
+]- .travis.yml
+]- system.properties
+   java.runtime.version=11
+```
 
-      "Derivative Works" shall mean any work, whether in Source or Object
-      form, that is based on (or derived from) the Work and for which the
-      editorial revisions, annotations, elaborations, or other modifications
-      represent, as a whole, an original work of authorship. For the purposes
-      of this License, Derivative Works shall not include works that remain
-      separable from, or merely link (or bind by name) to the interfaces of,
-      the Work and Derivative Works thereof.
+**Travis**
 
-      "Contribution" shall mean any work of authorship, including
-      the original version of the Work and any modifications or additions
-      to that Work or Derivative Works thereof, that is intentionally
-      submitted to Licensor for inclusion in the Work by the copyright owner
-      or by an individual or Legal Entity authorized to submit on behalf of
-      the copyright owner. For the purposes of this definition, "submitted"
-      means any form of electronic, verbal, or written communication sent
-      to the Licensor or its representatives, including but not limited to
-      communication on electronic mailing lists, source code control systems,
-      and issue tracking systems that are managed by, or on behalf of, the
-      Licensor for the purpose of discussing and improving the Work, but
-      excluding communication that is conspicuously marked or otherwise
-      designated in writing by the copyright owner as "Not a Contribution."
+The project root contains a .travis.yml file with the following setup
+```
+language: java
+before_install:
+- chmod +x mvnw
+deploy:
+  provider: heroku
+  api_key:
+    secure: GWLfJVWDR4TzKOfsCjTmn1x/3nuHscQbU31sVcnC/AXNneBNTOhlsJEGa3WpiszlEFzGRVJ8f61cIAKvjA+odVwOVSXqV2GCrPKRb8eF+bxtzvIf9CuF1nIHjLaLTEzqv/zGhOyJPc4PVzgnB9GP+qZto/rjlo+SYcQPN0tI1EQqpepDpWySEf5VrlZUSdcGqqouqu1WEZPaem6SX6oVL6njnrj/dx3w7vPpTYggPAfidzZD+xjIrBifDb1vTS27DV17BsnH9gQX+IwHpE968kiNL1ba2+9Qw9CgNzBwqEj2CZyJAaV9PB8N1CRj0ooDyL4w3OtGKOogKWpbvybe5IbK8CWo4f+8muQ1r/Pt/zLnXdbHS3i4/FsDazInjZfWxHK3xglLYHqRxM2yPnNqH33HEVcJ9BFMcJjDBrTRXXaZ0Paz5LRFaSzxrTz3EIGMTkYqVzgDWdNB5ZRr95oSLcUIwWBpGSvo5gKsqfL3Cobos68ei+mMWGozCw3ZirDrtxyL1bg+KE9jDfh4SfPwgWiecTfp9DmyAkQLHW+AM3eBMj0nv1MD6ggrOIFmauJOqV/J59zKQQiSWrMFPaVjr939xISMCDY43KUJBx5ss6djUw6KVIf1malxlS5bxX3+eJ2PPOWYXyDKPBPtg0SEjSoV3OoRxnAYehwyIETGnHY=
+  app:
+    dev: paawww-dev
+    staging: paawww-staging
+    master: paawww-production
+    setup/project: paawww-dev
+  on:
+    all_branches: true
+  skip_cleanup: true
+```
 
-      "Contributor" shall mean Licensor and any individual or Legal Entity
-      on behalf of whom a Contribution has been received by Licensor and
-      subsequently incorporated within the Work.
+**What each line does**
+- language tells Travis what language our project is in
+- before install we make our mvnw script executable
+- when the build succeeds we deploy to Heroku
+- the api-key provided is a Travis encrypted Heroku auth-token. I used the Travis and Heroku Command line clients to get this. See more in [the documentation](https://docs.travis-ci.com/user/deployment/heroku/).
+- in app: we specify what Heroku apps to deploy our branches to. E.g, New builds on dev branch get deployed to Heroku app paaww-dev. Be sure to make sure these apps are set up on Heroku.
+- on: we can specify conditional deploys with on:. Here I'm saying I want a deploy all all branches.
+- skip_cleanup: true retains our build files after the travis build. (The idea is so that Heroku doesn't have to rebuild our project, resulting in shorter build times, but for now this project deployments rely on Heroku rebuilds)
+Reference [the documentation](https://docs.travis-ci.com/user/tutorial/) for more info.
 
-   2. Grant of Copyright License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      copyright license to reproduce, prepare Derivative Works of,
-      publicly display, publicly perform, sublicense, and distribute the
-      Work and such Derivative Works in Source or Object form.
+### Tracking Code Quality
 
-   3. Grant of Patent License. Subject to the terms and conditions of
-      this License, each Contributor hereby grants to You a perpetual,
-      worldwide, non-exclusive, no-charge, royalty-free, irrevocable
-      (except as stated in this section) patent license to make, have made,
-      use, offer to sell, sell, import, and otherwise transfer the Work,
-      where such license applies only to those patent claims licensable
-      by such Contributor that are necessarily infringed by their
-      Contribution(s) alone or by combination of their Contribution(s)
-      with the Work to which such Contribution(s) was submitted. If You
-      institute patent litigation against any entity (including a
-      cross-claim or counterclaim in a lawsuit) alleging that the Work
-      or a Contribution incorporated within the Work constitutes direct
-      or contributory patent infringement, then any patent licenses
-      granted to You under this License for that Work shall terminate
-      as of the date such litigation is filed.
+**JaCoCo and Coveralls for Coverage**
 
-   4. Redistribution. You may reproduce and distribute copies of the
-      Work or Derivative Works thereof in any medium, with or without
-      modifications, and in Source or Object form, provided that You
-      meet the following conditions:
+We're using the [JaCoCo](https://www.jacoco.org/jacoco/trunk/index.html) library to generate code coverage reports, and [coveralls](https://coveralls.io/) as our continuos integration coverage reporting tool. The way this works: JaCoCo is set up to generate a coverage report each time we run a travis build by making a PR or updating a PR with a commit. The report is then sent over to coveralls which includes a summary of it in our PR -- allowing us to see at a glance whether we're writing enough tests for our coverage goal of 50%.
 
-      (a) You must give any other recipients of the Work or
-          Derivative Works a copy of this License; and
+The setup followed [the coveralls Java documentation](https://docs.coveralls.io/java) with **one important NOTE**. We needed to add a javax dependency to the coveralls plugin as [detailed in this issue](https://github.com/trautonen/coveralls-maven-plugin/issues/112), likely because we're using Java 11. Here's what all this looks like in our pom.xml file
 
-      (b) You must cause any modified files to carry prominent notices
-          stating that You changed the files; and
+```
+			<plugin>
+				<groupId>org.eluder.coveralls</groupId>
+				<artifactId>coveralls-maven-plugin</artifactId>
+				<version>4.3.0</version>
+				<dependencies>
+					<dependency>
+						<groupId>javax.xml.bind</groupId>
+						<artifactId>jaxb-api</artifactId>
+						<version>2.2.3</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+			<plugin>
+				<groupId>org.jacoco</groupId>
+				<artifactId>jacoco-maven-plugin</artifactId>
+				<version>0.8.5</version>
+				<executions>
+					<execution>
+						<id>prepare-agent</id>
+						<goals>
+							<goal>prepare-agent</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+```
 
-      (c) You must retain, in the Source form of any Derivative Works
-          that You distribute, all copyright, patent, trademark, and
-          attribution notices from the Source form of the Work,
-          excluding those notices that do not pertain to any part of
-          the Derivative Works; and
+**Codeclimate for Code Smells**
 
-      (d) If the Work includes a "NOTICE" text file as part of its
-          distribution, then any Derivative Works that You distribute must
-          include a readable copy of the attribution notices contained
-          within such NOTICE file, excluding those notices that do not
-          pertain to any part of the Derivative Works, in at least one
-          of the following places: within a NOTICE text file distributed
-          as part of the Derivative Works; within the Source form or
-          documentation, if provided along with the Derivative Works; or,
-          within a display generated by the Derivative Works, if and
-          wherever such third-party notices normally appear. The contents
-          of the NOTICE file are for informational purposes only and
-          do not modify the License. You may add Your own attribution
-          notices within Derivative Works that You distribute, alongside
-          or as an addendum to the NOTICE text from the Work, provided
-          that such additional attribution notices cannot be construed
-          as modifying the License.
-
-      You may add Your own copyright statement to Your modifications and
-      may provide additional or different license terms and conditions
-      for use, reproduction, or distribution of Your modifications, or
-      for any such Derivative Works as a whole, provided Your use,
-      reproduction, and distribution of the Work otherwise complies with
-      the conditions stated in this License.
-
-   5. Submission of Contributions. Unless You explicitly state otherwise,
-      any Contribution intentionally submitted for inclusion in the Work
-      by You to the Licensor shall be under the terms and conditions of
-      this License, without any additional terms or conditions.
-      Notwithstanding the above, nothing herein shall supersede or modify
-      the terms of any separate license agreement you may have executed
-      with Licensor regarding such Contributions.
-
-   6. Trademarks. This License does not grant permission to use the trade
-      names, trademarks, service marks, or product names of the Licensor,
-      except as required for reasonable and customary use in describing the
-      origin of the Work and reproducing the content of the NOTICE file.
-
-   7. Disclaimer of Warranty. Unless required by applicable law or
-      agreed to in writing, Licensor provides the Work (and each
-      Contributor provides its Contributions) on an "AS IS" BASIS,
-      WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or
-      implied, including, without limitation, any warranties or conditions
-      of TITLE, NON-INFRINGEMENT, MERCHANTABILITY, or FITNESS FOR A
-      PARTICULAR PURPOSE. You are solely responsible for determining the
-      appropriateness of using or redistributing the Work and assume any
-      risks associated with Your exercise of permissions under this License.
-
-   8. Limitation of Liability. In no event and under no legal theory,
-      whether in tort (including negligence), contract, or otherwise,
-      unless required by applicable law (such as deliberate and grossly
-      negligent acts) or agreed to in writing, shall any Contributor be
-      liable to You for damages, including any direct, indirect, special,
-      incidental, or consequential damages of any character arising as a
-      result of this License or out of the use or inability to use the
-      Work (including but not limited to damages for loss of goodwill,
-      work stoppage, computer failure or malfunction, or any and all
-      other commercial damages or losses), even if such Contributor
-      has been advised of the possibility of such damages.
-
-   9. Accepting Warranty or Additional Liability. While redistributing
-      the Work or Derivative Works thereof, You may choose to offer,
-      and charge a fee for, acceptance of support, warranty, indemnity,
-      or other liability obligations and/or rights consistent with this
-      License. However, in accepting such obligations, You may act only
-      on Your own behalf and on Your sole responsibility, not on behalf
-      of any other Contributor, and only if You agree to indemnify,
-      defend, and hold each Contributor harmless for any liability
-      incurred by, or claims asserted against, such Contributor by reason
-      of your accepting any such warranty or additional liability.
-
-   END OF TERMS AND CONDITIONS
-
-   Copyright 2020 Nnadozie Okeke, Tosin Farai
-
-   Licensed under the Apache License, Version 2.0 (the "License");
-   you may not use this file except in compliance with the License.
-   You may obtain a copy of the License at
-
-       http://www.apache.org/licenses/LICENSE-2.0
-
-   Unless required by applicable law or agreed to in writing, software
-   distributed under the License is distributed on an "AS IS" BASIS,
-   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-   See the License for the specific language governing permissions and
-   limitations under the License.
+We [set up Codeclimate Quality](https://docs.codeclimate.com/docs/workflow) with [Github PR Integration enabled](https://docs.codeclimate.com/docs/github-pull-requests) using the default quality metrics to track code smells in our code.

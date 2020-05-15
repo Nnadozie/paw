@@ -1,13 +1,13 @@
-package com.example.pawsocialapp;
+package com.paawww.paw;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class PawSocialAppApplication {
+public class PawApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PawSocialAppApplication.class, args);
+		SpringApplication.run(PawApplication.class, args);
 	}
 
 }
