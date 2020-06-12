@@ -6,9 +6,7 @@
 # Paw
 A social app to bring people closer to those who matter to them.
 
-setup/project: [![Build Status](https://travis-ci.com/Nnadozie/paw.svg?branch=setup/project)](https://travis-ci.com/Nnadozie/paw) [![Coverage Status](https://coveralls.io/repos/github/Nnadozie/paw/badge.svg?branch=setup/project)](https://coveralls.io/github/Nnadozie/paw?branch=setup/project)
-
-**Required minimum coverage: 50%**
+**Required minimum coverage: 50%, with no regressions**
 
 Dev: [![Build Status](https://travis-ci.com/Nnadozie/paw.svg?branch=dev)](https://travis-ci.com/Nnadozie/paw) [![Coverage Status](https://coveralls.io/repos/github/Nnadozie/paw/badge.svg?branch=dev)](https://coveralls.io/github/Nnadozie/paw?branch=dev) [![Maintainability](https://api.codeclimate.com/v1/badges/c5d3506b2e15785bb622/maintainability)](https://codeclimate.com/github/Nnadozie/paw/maintainability)
 

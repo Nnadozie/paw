@@ -12,7 +12,6 @@ deploy:
     dev: paawww-dev
     staging: paawww-staging
     master: paawww-production
-    setup/project: paawww-dev
   on:
     all_branches: true
   skip_cleanup: true
