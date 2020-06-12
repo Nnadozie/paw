@@ -23,15 +23,15 @@ public class UserDataRepositoryIntegrationTest {
     @Test
     public void whenGetUserByName_thenReturnUser() {
         UserDataModel nnadozie = new UserDataModel();
-        nnadozie.setFirstName("nnadozie");
+        nnadozie.setName("nnadozie");
         nnadozie.setLastName("Okeke");
 
         entityManager.persist(nnadozie);
         entityManager.flush();
 
-        UserDataModel found = userDataRepository.getUserByName(nnadozie.getFirstName(), nnadozie.getLastName());
+        UserDataModel found = userDataRepository.findByName(nnadozie.getName());
         
-        assertThat(found.getFirstName()).isEqualTo(nnadozie.getFirstName());
+        assertThat(found.getName()).isEqualTo(nnadozie.getName());
     }
     
 }

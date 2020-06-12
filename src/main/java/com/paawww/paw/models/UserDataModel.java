@@ -15,7 +15,7 @@ public class UserDataModel {
     private Integer userID;
 
     @Size(min = 3, max = 20)
-    private String firstName;
+    private String name;
 
     @Size(min = 3, max = 20)
     private String lastName;
@@ -41,17 +41,17 @@ public class UserDataModel {
     }
 
     /**
-     * @return String return the firstName
+     * @return String return the name
      */
-    public String getFirstName() {
-        return firstName;
+    public String getName() {
+        return name;
     }
 
     /**
-     * @param firstName the firstName to set
+     * @param name the name to set
      */
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
+    public void setName(String name) {
+        this.name = name;
     }
 
     /**
