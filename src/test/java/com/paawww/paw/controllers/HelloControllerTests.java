@@ -17,5 +17,4 @@ public class HelloControllerTests {
 	public void contexLoads() throws Exception {
 		assertThat(controller).isNotNull();
 	}
-	
 }
