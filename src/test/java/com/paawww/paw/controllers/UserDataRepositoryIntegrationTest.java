@@ -31,8 +31,7 @@ public class UserDataRepositoryIntegrationTest {
 
         UserDataModel found = userDataRepository.findByName(nnadozie.getName());
         
-        assertThat(found.getName()).isEqualTo(nnadozie.getName());
-        
+        assertThat(found.getName()).isEqualTo(nnadozie.getName());   
     }
     
 }
