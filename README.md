@@ -4,7 +4,20 @@
 
 
 # Paw
-A social app to bring people closer to those who matter to them.
+A social app to bring people closer to those who matter to them, because no existing social media platform really does this.
+
+Social media platforms are so ill designed to bring people closer to those who matter to them, that they actually end up alienating people from their support networks, and inducing poor mental health.
+
+Paw aims to fix this by drawing inspiration from the pyschology of human friendships, instead of the psychology of human addiction.
+
+For starters, it takes a strict approach to the notion of who a friend is and enforces limits on how many of each type you can have. According to the anthropologist and psychologist Robin Dunbar, we have a limited number of each friend type. According to his research, we can have a maximum of 150 casual friends. For close friends, that number is 50. For confidantes and supporters, it's 15. And we can have just 5 best friends.
+
+It also comes opinionated about what a healthy friendship looks like, and provides tools to help nurture or let go of friedships. This way, it adapts to the natural cycle of growth, decay, renewal or death that friendships experience.
+
+It penalizes attempts to exceed a healthy human limit by charging for increases to pre-defined healthy limits (either when adding to, or requesting to join a 'full' intimate space), because Paw is not a networking or career tool, it's an intimate space, where each new entrant changes the dynamic and potentially reduces the quality of existing relationships. Very much like in a book club, a circle of friends, a society's committee, a family, or just siblings hanging out.
+
+Finally, Paw takes a very serious approach to safety, the goal being that you can always trust Paw to let you know the moment a loved one is in danger.
+
 
 setup/project: [![Build Status](https://travis-ci.com/Nnadozie/paw.svg?branch=setup/project)](https://travis-ci.com/Nnadozie/paw) [![Coverage Status](https://coveralls.io/repos/github/Nnadozie/paw/badge.svg?branch=setup/project)](https://coveralls.io/github/Nnadozie/paw?branch=setup/project)
 
